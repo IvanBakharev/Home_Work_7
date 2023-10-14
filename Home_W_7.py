@@ -1,4 +1,5 @@
                                                     # Задание семь
+print("Колличество элементов массива: ")
 
 print(*[int(input()) for _ in range(int(input()))][::-1])
 
@@ -15,10 +16,22 @@ print(*rcr(lst))
 
                                                   # Третье Задание
 
+print("Масса которую выдерживает лодка: ")
 m = int(input())
 n = int(input())
-a =[]
-for _ in range(n):
+a = []
+b = []
+for i in range(n):
     a.append(int(input()))
-    
-print((2 * min(a) <= m) + len([x for x in a if x + min(a) > m]))
+ 
+for x in range(len(a)):
+    if a[x] + min(a) <= m:
+        b += [[a[x], min(a)]]
+        a[x] += m
+        a[a.index(min(a))] += m
+    else:
+        if a[x] > m:
+            continue
+        else:
+            b += [[a[x]]]
+print(len(b))
